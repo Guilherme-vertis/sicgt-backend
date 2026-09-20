@@ -121,8 +121,9 @@ router.post('/login', async (req, res) => {
       },
     });
   } catch (error) {
+    console.error('Login error:', error.message, error.stack);
     logError('Login', error, req.ip);
-    res.status(500).json({ error: 'Erro ao fazer login.' });
+    res.status(500).json({ error: `Erro ao fazer login: ${error.message}` });
   }
 });
 
