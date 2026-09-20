@@ -16,13 +16,21 @@ console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
 const connectionString = process.env.DATABASE_URL || `postgresql://${process.env.DB_USER || 'postgres'}:${process.env.DB_PASSWORD || 'postgres'}@${process.env.DB_HOST || 'localhost'}:${process.env.DB_PORT || 5432}/${process.env.DB_NAME || 'sicgt'}`;
 console.log('Connection string host:', connectionString.split('@')[1]?.split(':')[0] || 'unknown');
 
+// Hide password in logs
+const safeConnString = connectionString.replace(/:[^@]*@/, ':***@');
+console.log('Safe connection string:', safeConnString);
+
 const pool = new Pool({
   connectionString,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
 pool.on('error', (err) => {
-  console.error('Erro no pool de conexões:', err);
+  console.error('Pool connection error:', err.message, err.code);
+});
+
+pool.on('connect', () => {
+  console.log('✅ Successfully connected to database');
 });
 
 // Função para executar queries com logging
