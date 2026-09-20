@@ -2,7 +2,11 @@
 // Configuração do pool de conexões PostgreSQL (Local ou Supabase)
 
 const { Pool } = require('pg');
-require('dotenv').config();
+
+// Only load .env in development
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 // Debug: log connection details
 console.log('NODE_ENV:', process.env.NODE_ENV);
