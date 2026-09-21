@@ -1,40 +1,6 @@
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Node modules
 node_modules/
-npm-debug.log
-yarn-error.log
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-logs/
-*.log
-
-# Build
 dist/
-build/
-
-# Database backups
-*.sql.bak
-*.sql.backup
-
-# Temporary files
-tmp/
-temp/
-
-# Credentials
-credentials.json
-secrets.json
+.env
+coverage/
+*.log
+.DS_Store

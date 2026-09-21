@@ -1,34 +1,38 @@
 {
   "name": "sicgt-backend",
   "version": "1.0.0",
-  "description": "Sistema Integrado de Gestão de Comunicação e Tarefas Contábil - Backend",
-  "main": "src/server.js",
+  "private": true,
+  "description": "API REST do Sistema de Comunicação e Gestão de Tarefas",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "db:init": "psql -U postgres -d postgres -f schema.sql",
-    "db:seed": "node scripts/seed.js"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
-  "keywords": [
-    "contabilidade",
-    "gestão",
-    "comunicação",
-    "tarefas",
-    "speed-neves"
-  ],
-  "author": "Speed Neves Contabilidade",
-  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "express": "^4.18.2",
-    "pg": "^8.10.0",
-    "jsonwebtoken": "^9.0.2",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.3.1",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
-    "express-validator": "^7.0.0",
-    "axios": "^1.6.0"
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.10.1",
+    "@types/pg": "^8.15.6",
+    "supertest": "^7.1.4",
+    "@types/supertest": "^6.0.3",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.13"
   }
 }
